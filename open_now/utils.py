@@ -4,7 +4,7 @@ import requests
 from urllib.parse import urlencode, urlparse, parse_qsl
 import math 
 
-GOOGLE_API_KEY = 'AIzaSyCU9tondG6nw0-PcEmHfpPVJVrOsiWlo4w'
+GOOGLE_API_KEY = 'google_api_key_goes_here'
 
 # helper functions and classes
 
