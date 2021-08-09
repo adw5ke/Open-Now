@@ -10,6 +10,6 @@ To run the application on your computer:
 - clone repository
 - change directory into **open_now**
 - run the command ```python manage.py runserver```
-- visit http://127.0.0.1:8000/
+- visit [localhost:8000](http://127.0.0.1:8000/)
 
 \* it is recommended to run the project in a [virtual environment](https://docs.python.org/3/library/venv.html)
