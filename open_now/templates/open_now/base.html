@@ -1,0 +1,175 @@
+<!doctype html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>{% block page-title %}OpenNow{% endblock page-title %}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <!-- using bootstrap CDN temporarily -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- new CDN to import bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/headers.css' %}" rel="stylesheet">
+    <link href="{% static 'css/heroes.css' %}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    {% block navbar %}
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'open_now:home' %}">OpenNow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:business_list' %}">Discover Businesses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:business_form' %}">Submit a Business</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:forums' %}">Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:map' %}">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'open_now:about' %}">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        {% if user.is_authenticated %}
+                        <h6 class="dropdown-header">Signed in as <strong>{{user.username}}</strong></h6>
+                        {% else %}
+                        <h6 class="dropdown-header">Not signed in</h6>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item" href="{% url 'open_now:login' %}">Login</a></li>
+                        <!-- logout functionality now implemented -->
+                        <li><a class="dropdown-item" href="/accounts/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form action="{% url 'open_now:search_result' %}" method="get" class="d-flex">
+                <input class="form-control me-2" name="query" type="search" placeholder="Search businesses" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    {% endblock navbar %}
+</nav>
+
+{% block header-no-div %}
+{% endblock header-no-div %}
+
+<main class="container" style="padding-top:5rem">
+    {% block main-container %}
+    {% endblock main-container %}
+
+    <div class="starter-template text-center py-4 px-3">
+        <h1>{% block top-header %}{% endblock top-header %}</h1>
+        <p class="lead">{% block p-lead %}{% endblock p-lead %}</p> {# side note: you can just use "endblock" without adding the block name, it's just there for readibility #}
+
+        {% block upper-body %}
+        {% endblock upper-body %}
+    </div>
+    <div class="starter-template text-left px-3">
+        <p>
+            {% block body %}
+            {% endblock body %}
+        </p>
+        {% block body-non-para %} {# this block is for elements inside the body block, but not styled as a paragraph #}
+        {% endblock body-non-para %}
+    </div>
+
+</main><!-- /.container -->
+
+{% block footer %}
+<footer class="container py-5" style="margin-top:7.5rem">
+    {% block footer-content %}
+    <hr style="margin-bottom:1.5rem">
+    <div class="row">
+        <div class="col-12 col-md">
+            <h5>OpenNow</h5>
+            <small class="d-block mb-3 text-muted">Charlottesville and Albemarle County's premier site for exploring small businesses in the post-COVID era.</small>
+            <small class="d-block mb-3 text-muted">&copy; 2021 by Project Team B-26</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Businesses</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="link-secondary" href="{% url 'open_now:home' %}">Homepage</a></li>
+                <li><a class="link-secondary" href="{% url 'open_now:business_list' %}">Browse all businesses</a></li>
+                <li><a class="link-secondary" href="{% url 'open_now:business_form' %}">Submit new business</a></li>
+                <li><a class="link-secondary" href="{% url 'open_now:map' %}">Search by map</a></li>
+                <li><a class="link-secondary" href="{% url 'open_now:forums' %}">View forums</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Account</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="link-secondary" href="{% url 'open_now:login' %}">Login</a></li>
+                <li><a class="link-secondary" href="/accounts/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="link-secondary" href="{% url 'open_now:about' %}">About OpenNow</a></li>
+                <li><a class="link-secondary" href="https://github.com/uva-cs3240-s21/project-b-26"><i class="bi bi-file-lock2-fill" style="margin-right:0.25rem"></i>GitHub</a></li>
+                <li><a class="link-secondary" href="https://cs3240.cs.virginia.edu/">CS 3240 Course</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endblock footer-content %}
+</footer>
+{% endblock footer %}
+
+<!--<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>-->
+
+<!-- js bundle script for bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

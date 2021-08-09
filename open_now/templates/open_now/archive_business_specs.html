@@ -1,0 +1,313 @@
+
+<!doctype html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Homepage - OpenNow</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <!-- using bootstrap CDN temporarily -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OpenNow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:business_list' %}">Businesses</a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:business_form' %}">Submit a Business</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:forums' %}">Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'open_now:map' %}">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/uva-cs3240-s21/project-b-26">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        {% if user.is_authenticated %}
+                        <h6 class="dropdown-header">Signed in as <strong>{{user.username}}</strong></h6>
+                        {% else %}
+                        <h6 class="dropdown-header">Signed in as <strong>guest</strong></h6>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item" href="{% url 'open_now:login' %}">Login</a></li>
+                        <!-- ADD TEMPORARY LOGOUT FUNCTIONALITY HERE -->
+                        <li><a class="dropdown-item" href="{% url 'open_now:login' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form action="{% url 'open_now:search_result' %}" method="get">
+                <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<main class="container" style="padding-top:5rem">
+
+    <div class="starter-template text-center py-5 px-3">
+
+
+
+<div class="card">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <div class="card-header">
+    <h2 class="card-title">{{business.business_name}}</h2>
+    </div>
+    <p class="card-text">{{business.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{business.phone_number}}</li>
+
+  </ul>
+  <div class="card-body">
+    <a href={{business.website}} class="card-link">Find us Online!</a>
+
+  </div>
+</div>
+
+<br>
+<!-- hours card -->
+<div class="card">
+    <div class="card-header">
+        <h2>Do you have additional info about their hours? Help us update them!</h2>
+    </div>
+    <div class="card-body">
+         <form action="/open_now/update-hours/" method="POST">
+    {% csrf_token %}
+<div class="form-group-row">
+ <input type="hidden" class="form-control" id="store" name="store" value={{business.business_name}}><br>
+<label for="weekday_from">From: </label>
+
+      <select id="weekday_from" name="weekday_from">
+    <option value=1>Monday</option>
+    <option value=2>Tuesday</option>
+    <option value=3>Wednesday</option>
+    <option value=4>Thursday</option>
+          <option value=5>Friday</option>
+    <option value=6>Saturday</option>
+           <option value=7>Sunday</option>
+          </select>
+
+          <label for="weekday_to">To: </label>
+
+      <select id="weekday_to" name="weekday_to">
+    <option value=1>Monday</option>
+    <option value=2>Tuesday</option>
+    <option value=3>Wednesday</option>
+    <option value=4>Thursday</option>
+          <option value=5>Friday</option>
+    <option value=6>Saturday</option>
+           <option value=7>Sunday</option>
+
+  </select>
+
+              <label for="weekday_to">From: </label>
+
+      <select id="from_hour" name="from_hour">
+    <option value=1>1:00 am</option>
+    <option value=2>2:00 am</option>
+    <option value=3>3:00 am</option>
+    <option value=4>4:00 am</option>
+          <option value=5>5:00 am</option>
+    <option value=6>6:00 am</option>
+           <option value=7>7:00 am</option>
+              <option value=8>8:00 am</option>
+    <option value=9>9:00 am</option>
+    <option value=10>10:00 am</option>
+    <option value=11>11:00 am</option>
+          <option value=12>12:00 pm</option>
+    <option value=13>1:00 pm</option>
+           <option value=14>2:00 pm</option>
+              <option value=15>3:00 pm</option>
+    <option value=16>4:00 pm</option>
+    <option value=17>5:00 pm</option>
+    <option value=18>6:00 pm</option>
+          <option value=19>7:00 pm</option>
+    <option value=20>8:00 pm</option>
+           <option value=21>9:00 pm</option>
+              <option value=22>10:00 pm</option>
+    <option value=23>11:00 pm</option>
+    <option value=24>12:00 am</option>
+
+
+
+  </select>
+
+          <select id="to_hour" name="to_hour">
+    <option value=1>1:00 am</option>
+    <option value=2>2:00 am</option>
+    <option value=3>3:00 am</option>
+    <option value=4>4:00 am</option>
+          <option value=5>5:00 am</option>
+    <option value=6>6:00 am</option>
+           <option value=7>7:00 am</option>
+              <option value=8>8:00 am</option>
+    <option value=9>9:00 am</option>
+    <option value=10>10:00 am</option>
+    <option value=11>11:00 am</option>
+          <option value=12>12:00 pm</option>
+    <option value=13>1:00 pm</option>
+           <option value=14>2:00 pm</option>
+              <option value=15>3:00 pm</option>
+    <option value=16>4:00 pm</option>
+    <option value=17>5:00 pm</option>
+    <option value=18>6:00 pm</option>
+          <option value=19>7:00 pm</option>
+    <option value=20>8:00 pm</option>
+           <option value=21>9:00 pm</option>
+              <option value=22>10:00 pm</option>
+    <option value=23>11:00 pm</option>
+    <option value=24>12:00 am</option>
+
+
+
+  </select>
+<p></p>
+    <button type="submit" class="btn btn-primary" value="submit">Submit!</button>
+    </div>
+
+
+
+</form>
+    <h2>Hours:</h2>
+         {% if hours %}
+
+         {{hours.get_weekday_from_display}} - {{hours.get_weekday_to_display}}
+         {{hours.get_from_hour_display}} - {{hours.get_to_hour_display}}
+
+        {% else %}
+    <p>No hours are available yet.</p>
+
+
+        {%endif%}
+    </div>
+    </div>
+    <!-- end hours card -->
+    <br>
+    <!-- review card -->
+    <div class="card">
+
+    <div class="card-header">
+    <h2>Reviews:</h2>
+    </div>
+    <div class="card-body">
+        {% if reviews %}
+    {% for r in reviews %}
+
+
+  <ul class="list-group-item">
+
+        <h4>By: {{r.user}}</h4>
+        <h5>Rating: </h5> {{r.rating}}/5
+        <h5>Review: </h5>"{{r.review_text}}"
+  </ul>
+    {%endfor%}
+    </div>
+
+
+
+{% else %}
+    <p>No reviews are available yet.</p>
+
+
+{% endif %}
+
+</div>
+<!-- end review card -->
+<br>
+<!-- submit review card -->
+<div class="card">
+
+    <div class="card-header">
+    <h2>Submit a Review:</h2>
+    </div>
+
+         <form action="/open_now/new-review/" method="POST">
+    {% csrf_token %}
+<div class="form-group-column">
+  <label for="review_text" class="form-label">What did you think?</label><br>
+  <input type="text" class="form-control" id="review_text" name="review_text"><br>
+ <input type="hidden" class="form-control" id="business_name" name="business_name" value={{business.business_name}}><br>
+
+<label for="rating">How would you rate {{business.business_name}}?</label>
+  <select id="rating" name="rating">
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+      <option value=5>5</option>
+  </select>
+<p></p>
+    <button type="submit" class="btn btn-primary" value="submit">Submit!</button>
+    </div>
+
+
+
+</form>
+
+</div>
+</div>
+<!-- end submit review card -->
+
+
+    </div>
+
+</main><!-- /.container -->
+
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- js bundle script for bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

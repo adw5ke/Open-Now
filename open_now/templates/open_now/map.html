@@ -1,0 +1,64 @@
+{% extends "open_now/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page-title %}
+Business Map Search - OpenNow
+{% endblock page-title %}
+
+{% block header-no-div %}
+
+<div class="container-fluid" style="padding-top:3rem">
+    <div class="row">
+        <div class="col-4" style="padding-top:2rem">
+            <div class="container">
+                <h1>Nearby Business Map Search</h1>
+                <p class="lead">Enter a business category and kilometer radius to <strong>search for nearby businesses.</strong></p>
+            </div>
+            <div class="container">
+                <form method="POST" class="row g-3">
+                    {% csrf_token %}
+                    <div class="col-md-8">
+                        {{form.search_category | as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.radius | as_crispy_field}}
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url 'open_now:map' %}" class="btn btn-info text-white" role="button">Reset Address</a>
+                        <input type="submit" class="btn btn-success" value="Search Nearby Businesses">
+                    </div>
+                </form>
+            </div>
+            <div class="container py-2">
+                <p class="small">This product includes GeoLite2 data created by MaxMind, available from
+                    <a href="https://www.maxmind.com">https://www.maxmind.com</a></p>
+            </div>
+        </div>
+        <div class="col-8 g-0">
+            {{map|safe}}
+        </div>
+    </div>
+</div>
+
+{% if request.POST and distance is not None %}
+<script>
+    $(window).on('load', function() {
+        $('#exampleModal').modal('show')
+    })
+</script>
+{% endif %}
+{% endblock header-no-div %}
+
+{% block top-header %}
+{# Map Search #}
+{% endblock top-header %}
+
+{% block p-lead %}
+{# Enter a valid address and <strong>search for businesses by map.</strong> #}
+{% endblock p-lead %}
+
+{% block upper-body %}
+
+{% endblock upper-body %}
+{% block body %}
+{% endblock body %}

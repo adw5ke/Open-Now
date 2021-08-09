@@ -1,0 +1,77 @@
+{% extends "open_now/base.html" %}
+{% load static %}
+{% block page-title %}
+Forums - OpenNow
+{% endblock page-title %}
+
+{% block top-header %}
+OpenNow Forums
+{% endblock top-header %}
+
+{% block p-lead %}
+See what other users in the community are talking about. Chime in and <strong>share your own thoughts and questions!</strong>
+{% endblock p-lead %}
+
+{% block upper-body %}
+{% if user.is_authenticated %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    Welcome! You're currently signed in as <strong>{{user.username}}</strong>!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% else %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    You're currently <strong>not signed in.</strong> To participate in the forums, be sure to <a href="{% url 'open_now:login' %}" class="alert-link">log in</a> to the site!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% endblock upper-body %}
+{% block body %}
+<small class="text-muted">{{count}} currently active discussion{{count|pluralize}} on OpenNow. All times UTC.</small>
+<div class="list-group">
+    <li class="list-group-item list-group-item-dark flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">Discussion Topic</h4>
+            <h5 class="mb-1">
+            </h5>
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'open_now:new_forum' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-sm">Submit a Forum Post</button>
+                </form>
+            {% else %}
+                <button type="button" class="btn btn-success btn-sm" disabled>Submit a Forum Post</button>
+            {% endif %}
+        </div>
+    </li>
+    {% for f in forums reversed%}
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{f.topic}}</h5>
+            <small class="text-muted">Posted by <strong>{{f.email}}</strong> on {{f.date_created}}</small>
+        </div>
+        <p class="mb-3">{{f.description}}</p>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'open_now:discuss' f.id %}" class="mt-3 mb-1">
+            {% csrf_token %}
+            <button class="btn btn-success btn-sm stretched-link">Add a reply</button>
+        </form>
+        {% else %}
+        <div class="mt-3 mb-1">
+            <button class="btn btn-success btn-sm stretched-link" disabled>Add a reply</button>
+
+        </div>
+        {% endif %}
+        <small class="text-muted">All replies:</small>
+        {%for discuss in discussions%}
+            {%for objs in discuss%}
+                {% if objs.forum == f %}
+                    <p class="mb-1"><i class="bi bi-chat-right-text p-2"></i><strong>{{objs.email}}:</strong> {{objs.discuss}}</p>
+                {% endif %}
+            {%endfor%}
+        {%endfor%}
+    </a>
+    {%endfor%}
+</div>
+{% endblock body %}

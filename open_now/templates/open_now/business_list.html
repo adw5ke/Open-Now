@@ -1,0 +1,127 @@
+{% extends "open_now/base.html" %}
+{% load static %}
+{% block page-title %}Businesses - OpenNow{% endblock page-title %}
+
+{% block top-header %}
+Discover Businesses
+{% endblock top-header %}
+
+{% block p-lead %}
+{{business_list|length}} business{{business_list|pluralize:"es"}} listed on OpenNow.
+{% endblock p-lead %}
+
+{% block body %}
+{% if business_list %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for business in business_list %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static "css/restaurant-default.jpg" %}" class="card-img-top" alt="Restaurant image">
+                <div class="card-body">
+                    <h5 class="card-title"><!--<a href="/open_now/businesses/{{business.business_name}}" class="stretched-link">-->{{business.business_name}}<!--</a>--></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        {% if business.business_category == "REST" %}
+                        RESTAURANT
+                        {% endif %}
+                        {% if business.business_category == "SHOP" %}
+                        RETAIL
+                        {% endif %}
+                        {% if business.business_category == "GYM" %}
+                        GYM OR WORKOUT
+                        {% endif %}
+                        {% if business.business_category == "NONE" %}
+                        OTHER OR UNSPECIFIED
+                        {% endif %}
+                    </h6>
+                    <p class="card-text">{{business.description | truncatechars_html:175}}</p>
+                    <!--<button type="button" class="btn btn-dark">{{business.website | urlize}}<i class="bi bi-globe2 m-2 text-light"></i></button>-->
+                    <a href="{{business.website}}" class="btn btn-dark"><i class="bi bi-globe2 m-2 text-light"></i></a>
+                    <a href="/open_now/businesses/{{business.business_name}}" class="btn btn-primary">See Details »</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="bi bi-telephone-fill m-2"></i>{{business.phone_number}}</li>
+                </ul>
+                <div class="card-footer">
+                    <small class="text-muted"><strong>Hours:</strong>
+                        {% if business.hours %}
+                        {{business.hours.get_weekday_from_display}} - {{business.hours.get_weekday_to_display}}
+                        {{hours.get_from_hour_display}} - {{hours.get_to_hour_display}}
+                        {% else %}
+                        <a href="/open_now/businesses/{{business.business_name}}">See business details »</a>
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-warning text-center" role="alert">
+        <strong>Oops!</strong> No businesses are available at this time. Be the first to <a href="{% url 'open_now:business_form' %}" class="alert-link">submit a new business</a>!
+    </div>
+{% endif %}
+{% endblock body %}
+
+{#% block upper-body %#}
+<!--<div class="row">
+    <div class="col-sm mb-3">
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{% static "css/restaurant-default.jpg" %}" alt="Card image">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">Last updated 3 mins ago</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+{#% endblock upper-body %#}
+
+{#% block body %#}
+<!--
+{% if business_list %}
+    <div class="card-deck">
+        {% for business in business_list %}
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    {# TODO: Fix card image sizing; do not set relative to viewpoint, but to parent element #}
+                    <img src="{% static "css/restaurant-default2.jpg" %}" class="card-img img-fluid" style="width:100%; height:10vw; object-fit:cover;" alt="...">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/open_now/businesses/{{business.business_name}}" class="stretched-link">{{business.business_name}}</a></h5>
+                        <p class="card-text">{{business.description | truncatechars_html:175}}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+<div class="alert alert-warning text-center" role="alert">
+    <strong>Oops!</strong> No businesses are available at this time. Be the first to <a href="{% url 'open_now:business_form' %}" class="alert-link">submit a new business</a>!
+</div>
+{% endif %}-->
+{#% endblock body %#}

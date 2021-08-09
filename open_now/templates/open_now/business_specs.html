@@ -1,0 +1,338 @@
+{% extends "open_now/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page-title %}
+{{business.business_name}} - OpenNow
+{% endblock page-title %}
+
+{% block header-no-div %}
+{% endblock header-no-div %}
+
+{% block main-container %}
+<div class="starter-template text-left py-4 px-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'open_now:business_list' %}">Discover Businesses</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{business.business_name}}</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-8">
+            <h1>{{business.business_name}}</h1>
+            <p class="text-muted"><strong>
+                {% if business.business_category == "REST" %}
+                RESTAURANT
+                {% endif %}
+                {% if business.business_category == "SHOP" %}
+                RETAIL
+                {% endif %}
+                {% if business.business_category == "GYM" %}
+                GYM OR WORKOUT
+                {% endif %}
+                {% if business.business_category == "NONE" %}
+                OTHER OR UNSPECIFIED
+                {% endif %}
+            </strong></p>
+            <p class="lead">{{business.description}}</p>
+            <hr>
+            <p class="small">Reviews sorted latest to oldest.</p>
+            <div class="card mb-3">
+                <h5 class="card-header">Submit a Review</h5>
+                <div class="card-body">
+
+                    <!-- <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                    <form action="/open_now/new-review/" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <label for="rating" class="form-label">How would you rate {{business.business_name}}?</label>
+                            <select class="form-select" id="rating" name="rating">
+                                <option value=1>1 star</option>
+                                <option value=2>2 stars</option>
+                                <option value=3>3 stars</option>
+                                <option value=4>4 stars</option>
+                                <option value=5>5 stars</option>
+                            </select>
+                            <div id="ratingHelpText" class="form-text">
+                                1 star being very bad, 5 stars being very good.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <label for="review_text" class="form-label">What did you think?</label>
+                            <input type="text" class="form-control" id="review_text" placeholder="Your thoughts on this business" name="review_text">
+                            <input type="hidden" class="form-control" id="business_name" name="business_name" value={{business.business_name}}>
+                        </div>
+                        <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#submitReviewModal">Submit Review</button>
+                        {% if user.is_authenticated %}
+                        <p class="card-text small text-muted">Submitting as <strong>{{user.username}}.</strong></p>
+                        {% else %}
+                        <p class="card-text small text-muted">Submitting as <strong>anonymous user.</strong></p>
+                        {% endif %}
+
+                        <!-- modal to confirm review submission -->
+                        <div class="modal fade" id="submitReviewModal" tabindex="-1" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Submit Review?</h5>
+                                        
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Reviews submitted to OpenNow are permanent, and cannot be modified or deleted. <strong>Are you sure you want to submit this review?</strong>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-success">Submit Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                </div>
+            </div>
+            {% if reviews %}
+                {% for r in reviews reversed %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {% if r.user == "AnonymousUser" %}
+                                Anonymous User
+                                {% else %}
+                                {{r.user}}
+                                {% endif %}
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {% if r.rating == 1 %}
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                {% endif %}
+                                {% if r.rating == 2 %}
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                {% endif %}
+                                {% if r.rating == 3 %}
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+                                {% endif %}
+                                {% if r.rating == 4 %}
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                {% endif %}
+                                {% if r.rating == 5 %}
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                {% endif %}
+                                {{r.rating}}/5 stars</h6>
+                            <p class="card-text"><i class="bi bi-chat-right-quote-fill p-2"></i>
+                                {% if r.review_text %}
+                                {{r.review_text}}
+                                {% else %}
+                                <em>No review text available.</em>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="card bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Oops! No reviews found.</h5>
+                    <p class="card-text">No reviews are available at this time for this business.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Contact <strong>{{business.business_name}}</strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" style="word-break: break-all">
+                        <!--<a href="{{business.website}}">-->{{business.website | urlize}}<!--</a>-->
+                        <i class="bi bi-globe2"></i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{business.phone_number}}
+                        <i class="bi bi-telephone-fill"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Business Hours
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="word-break: break-all">
+                        {% if hours %}
+                        {{hours.get_weekday_from_display}} - {{hours.get_weekday_to_display}}
+                        {{hours.get_from_hour_display}} - {{hours.get_to_hour_display}}
+                        {% else %}
+                        No hours are available yet.
+                        {%endif%}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Update Business Hours
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Do you have additional info about their hours? Help us update them!
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="word-break: break-all">
+                        <form action="/open_now/update-hours/" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" class="form-control" id="store" name="store" value={{business.business_name}}>
+                            <div class="row mb-1">
+                                <label for="weekday_from" class="col-sm-4 col-form-label">From:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-select" id="weekday_from" name="weekday_from">
+                                        <option value=1>Monday</option>
+                                        <option value=2>Tuesday</option>
+                                        <option value=3>Wednesday</option>
+                                        <option value=4>Thursday</option>
+                                        <option value=5>Friday</option>
+                                        <option value=6>Saturday</option>
+                                        <option value=7>Sunday</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <label for="weekday_to" class="col-sm-4 col-form-label">To:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-select" id="weekday_to" name="weekday_to">
+                                        <option value=1>Monday</option>
+                                        <option value=2>Tuesday</option>
+                                        <option value=3>Wednesday</option>
+                                        <option value=4>Thursday</option>
+                                        <option value=5>Friday</option>
+                                        <option value=6>Saturday</option>
+                                        <option value=7>Sunday</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <label for="from_hour" class="col-sm-4 col-form-label">From:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-select" id="from_hour" name="from_hour">
+                                        <option value=1>1:00 am</option>
+                                        <option value=2>2:00 am</option>
+                                        <option value=3>3:00 am</option>
+                                        <option value=4>4:00 am</option>
+                                        <option value=5>5:00 am</option>
+                                        <option value=6>6:00 am</option>
+                                        <option value=7>7:00 am</option>
+                                        <option value=8>8:00 am</option>
+                                        <option value=9>9:00 am</option>
+                                        <option value=10>10:00 am</option>
+                                        <option value=11>11:00 am</option>
+                                        <option value=12>12:00 pm</option>
+                                        <option value=13>1:00 pm</option>
+                                        <option value=14>2:00 pm</option>
+                                        <option value=15>3:00 pm</option>
+                                        <option value=16>4:00 pm</option>
+                                        <option value=17>5:00 pm</option>
+                                        <option value=18>6:00 pm</option>
+                                        <option value=19>7:00 pm</option>
+                                        <option value=20>8:00 pm</option>
+                                        <option value=21>9:00 pm</option>
+                                        <option value=22>10:00 pm</option>
+                                        <option value=23>11:00 pm</option>
+                                        <option value=24>12:00 am</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                    <label for="to_hour" class="col-sm-4 col-form-label">To:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" id="to_hour" name="to_hour">
+                                            <option value=1>1:00 am</option>
+                                            <option value=2>2:00 am</option>
+                                            <option value=3>3:00 am</option>
+                                            <option value=4>4:00 am</option>
+                                            <option value=5>5:00 am</option>
+                                            <option value=6>6:00 am</option>
+                                            <option value=7>7:00 am</option>
+                                            <option value=8>8:00 am</option>
+                                            <option value=9>9:00 am</option>
+                                            <option value=10>10:00 am</option>
+                                            <option value=11>11:00 am</option>
+                                            <option value=12>12:00 pm</option>
+                                            <option value=13>1:00 pm</option>
+                                            <option value=14>2:00 pm</option>
+                                            <option value=15>3:00 pm</option>
+                                            <option value=16>4:00 pm</option>
+                                            <option value=17>5:00 pm</option>
+                                            <option value=18>6:00 pm</option>
+                                            <option value=19>7:00 pm</option>
+                                            <option value=20>8:00 pm</option>
+                                            <option value=21>9:00 pm</option>
+                                            <option value=22>10:00 pm</option>
+                                            <option value=23>11:00 pm</option>
+                                            <option value=24>12:00 am</option>
+                                        </select>
+                                    </div>
+
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#updateBusinessHoursModal">Update Hours</button>
+
+                            <!-- modal to confirm update business hours submission -->
+                            <div class="modal fade" id="updateBusinessHoursModal" tabindex="-1" aria-labelledby="updateBusinessHoursModal" aria-hidden="true" style="word-wrap: break-word">
+                                <div class="modal-dialog modal-dialog-centered" style="word-wrap: break-word">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="updateBusinessHoursLabel">Update Business Hours?</h5>
+                                            <input type="hidden" name="next" value="{{ request.path }}">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-break" style="word-wrap: break-word">
+                                            Updating business hours will override the current hours for this business, and cannot be undone. <strong>Are you sure you want to update business hours?</strong>
+                                        </div>
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-success" value="submit">Update Business Hours</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+{% endblock main-container %}
+
+{% block top-header %}
+{{block.super}}
+{% endblock top-header %}
+
+{% block p-lead %}
+{{block.super}}
+{% endblock p-lead %}
+
+{% block upper-body %}
+{{block.super}}
+{% endblock upper-body %}
+
+{% block body %}
+
+{{block.super}}
+{% endblock body %}
+
+{% block body-non-para %}
+{{block.super}}
+{% endblock body-non-para %}

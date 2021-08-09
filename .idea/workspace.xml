@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5c069526-2b83-4280-b947-ca93bcb143d1" name="Default Changelist" comment="updated requirements.txt with Pillow">
+      <change afterPath="$PROJECT_DIR$/open_now/templates/open_now/archive_business_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/open_now/templates/open_now/business_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/open_now/templates/open_now/business_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/open_now/templates/open_now/business_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/open_now/templates/open_now/business_list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/open_now/admin.py" />
+        <option value="$PROJECT_DIR$/open_now/models.py" />
+        <option value="$PROJECT_DIR$/open_now/urls.py" />
+        <option value="$PROJECT_DIR$/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/open_now/static/css/cover.css" />
+        <option value="$PROJECT_DIR$/open_now/templates/open_now/login.html" />
+        <option value="$PROJECT_DIR$/open_now/static/css/starter-template.css" />
+        <option value="$PROJECT_DIR$/open_now/templates/open_now/business_list.html" />
+        <option value="$PROJECT_DIR$/open_now/templates/open_now/home.html" />
+        <option value="$PROJECT_DIR$/open_now/views.py" />
+        <option value="$PROJECT_DIR$/open_now/templates/open_now/business_form.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="266" />
+    <option name="y" value="23" />
+    <option name="width" value="1244" />
+    <option name="height" value="812" />
+  </component>
+  <component name="ProjectId" id="1r7sC7TleI0O96wBsYBJl6jKFkw" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="mysite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-b-26" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-b-26" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="open_now" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/open_now/templates/open_now" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrew Nguyen\Documents\uva-cs\cs3240\open-now\open_now\templates\open_now" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrew Nguyen\Documents\uva-cs\cs3240\open-now\open_now\static\css" />
+      <recent name="C:\Users\Andrew Nguyen\Documents\uva-cs\cs3240\open-now\open_now\templates\open_now" />
+      <recent name="$PROJECT_DIR$/open_now/static/css" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c069526-2b83-4280-b947-ca93bcb143d1" name="Default Changelist" comment="" />
+      <created>1615486540502</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615486540502</updated>
+      <workItem from="1618338335569" duration="997000" />
+      <workItem from="1618510400581" duration="7776000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed login landing page not loading background by adding new jpg file">
+      <created>1618304305954</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618304305954</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed navbar by adding &quot;d-flex&quot; class to search">
+      <created>1618304451276</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618304451276</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Changed &quot;signed in as guest&quot; to &quot;not signed in&quot;">
+      <created>1618304811619</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618304811619</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changed &quot;signed in as guest&quot; to &quot;not signed in&quot;">
+      <created>1618304875182</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618304875182</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Started framework for template inheritance and navbar improvements">
+      <created>1618306360437</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618306360437</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added crispy_forms to settings.py">
+      <created>1618306516794</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618306516794</updated>
+    </task>
+    <task id="LOCAL-00007" summary="set default crispy pack to bootstrap4 in settings.py">
+      <created>1618306586952</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618306586952</updated>
+    </task>
+    <task id="LOCAL-00008" summary="cleaned up base.html">
+      <created>1618338683250</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618338683250</updated>
+    </task>
+    <task id="LOCAL-00009" summary="incomplete changes; saving biz_list page with skeleton three col card layout">
+      <created>1618510763939</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618510763939</updated>
+    </task>
+    <task id="LOCAL-00010" summary="divided content block to upper-body and body blocks">
+      <created>1618511290375</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1618511290375</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added business card skeleton to biz_list page">
+      <created>1618511541830</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1618511541830</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added framework for biz-card conditional displays, alert for no businesses, loadstatics for all pages">
+      <created>1618512883399</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1618512883399</updated>
+    </task>
+    <task id="LOCAL-00013" summary="implemented non-working business card prototype">
+      <created>1618514829451</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1618514829451</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added restaurant default graphics to git">
+      <created>1618517213693</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1618517213693</updated>
+    </task>
+    <task id="LOCAL-00015" summary="set skeleton for category search on discover biz page">
+      <created>1618518005131</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618518005131</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed login landing page not loading background by adding new jpg file" />
+    <MESSAGE value="Fixed navbar by adding &quot;d-flex&quot; class to search" />
+    <MESSAGE value="Changed &quot;signed in as guest&quot; to &quot;not signed in&quot;" />
+    <MESSAGE value="Started framework for template inheritance and navbar improvements" />
+    <MESSAGE value="added crispy_forms to settings.py" />
+    <MESSAGE value="set default crispy pack to bootstrap4 in settings.py" />
+    <MESSAGE value="cleaned up base.html" />
+    <MESSAGE value="incomplete changes; saving biz_list page with skeleton three col card layout" />
+    <MESSAGE value="divided content block to upper-body and body blocks" />
+    <MESSAGE value="added business card skeleton to biz_list page" />
+    <MESSAGE value="added framework for biz-card conditional displays, alert for no businesses, loadstatics for all pages" />
+    <MESSAGE value="implemented non-working business card prototype" />
+    <MESSAGE value="added restaurant default graphics to git" />
+    <MESSAGE value="set skeleton for category search on discover biz page" />
+    <option name="LAST_COMMIT_MESSAGE" value="set skeleton for category search on discover biz page" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#307#331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/static/css/login-landing-bg.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/static/css/cover.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/templates/open_now/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="59" column="51" lean-forward="true" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/static/css/starter-template.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/templates/open_now/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/templates/open_now/business_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="68" selection-start-line="68" selection-end-line="104" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#main#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/open_now/templates/open_now/business_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#main#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,118 @@
+{% extends "open_now/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page-title %}
+About - OpenNow
+{% endblock page-title %}
+
+{% block top-header %}
+About OpenNow
+{% endblock top-header %}
+
+{% block p-lead %}
+Charlottesville and Albemarle County's premier site for exploring small businesses in the post-COVID era.{% endblock p-lead %}
+{% block upper-body %}
+{% endblock upper-body %}
+
+{% block body %}
+{% endblock body %}
+
+{% block body-non-para %}
+<h2>What is OpenNow?</h2>
+<p>OpenNow is a platform for community members in the Charlottesville and Albemarle County area - including University of Virginia students, faculty, and staff - to explore local small businesses during and after the COVID-19 pandemic. Users can view businesses, submit reviews for businesses, crowdsource their business hours, and submit their own business entries to OpenNow. Additionally, users can connect with other community members and share their experiences via the OpenNow forums. OpenNow is largely a crowdsourcing experiment to benefit the businesses that contribute so much to the Charlottesville area.</p>
+<p>OpenNow was originally created in Spring 2021 as a course project for the <a href="https://cs3240.cs.virginia.edu/">Advanced Software Development Methods (CS 3240) course</a> at the University of Virginia. This project falls under <em>Project Option 3: What's Changed?</em></p>
+<h2>Technologies and Source Code</h2>
+<p>The source code of OpenNow is available on a <a href="https://github.com/uva-cs3240-s21/project-b-26/">private GitHub repository</a>, accessible only by project team members and CS 3240 course staff.</p>
+<p>Some but not all of the technologies used in OpenNow are listed here.</p>
+<ul>
+    <li>Built with Python 3</li>
+    <li>Framework: Django 3.1</li>
+    <li>Build Environment: Travis CI</li>
+    <li>Source Control Management: GitHub</li>
+    <li>Cloud Hosting: Heroku</li>
+    <li>Packages: gunicorn
+        certifi
+        chardet
+        defusedxml
+        dj-database-url
+        Django
+        django-allauth
+        django-crispy-forms
+        crispy-bootstrap5
+        django-heroku
+        folium
+        geopy
+        idna
+        oauthlib
+        psycopg2
+        python3-openid
+        pytz
+        requests
+        requests-oauthlib
+        urllib3
+        whitenoise
+        pillow</li>
+</ul>
+<h2>Licenses</h2>
+<p>This site is licensed under the <a href="https://opensource.org/licenses/BSD-3-Clause">Modified BSD License</a>. <strong>Copyright &copy; 2021 by Project Team B-26. All rights reserved.</strong></p>
+<p>Various components of OpenNow are adapted from other sources, some of which are listed here. All components, even if not listed here, were developed originally or adapted in compliance with the licensing requirements of their respective owners.</p>
+<ul>
+    <li>
+        <a href="https://github.com/django/django/blob/master/LICENSE">Django</a> for site software. Released under Modified BSD license, copyright 2021 Django Software Foundation and individual contributors.
+    </li>
+    <li>
+        <a href="https://getbootstrap.com/docs/5.0/about/license/">Bootstrap 5.0</a> for the core CSS/JS of the site. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        <a href="https://getbootstrap.com/docs/5.0/examples/cover/">Cover template</a> for the welcome landing and logout pages. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        Portions of <a href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">Jumbotron</a> and <a href="https://getbootstrap.com/docs/4.0/examples/starter-template/">Starter</a> templates for the homepage. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        Portions of <a href="https://getbootstrap.com/docs/4.0/examples/starter-template/">Starter Template</a> for most pages on OpenNow. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        Portions of <a href="https://getbootstrap.com/docs/5.0/examples/product/">Product template</a> for the site footer. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        Portions of <a href="https://getbootstrap.com/docs/5.0/examples/headers/">Headers template</a> for the site navbar. Released under MIT license, copyright 2021 Twitter.
+    </li>
+    <li>
+        Photo by <a href="https://unsplash.com/@seitamaaphotography?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sandra Seitamaa</a> on <a href="https://unsplash.com/s/photos/restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> for the default business card image.
+    </li>
+    <li>
+        Photo by <a href="https://unsplash.com/@bantersnaps?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">bantersnaps</a> on <a href="https://unsplash.com/s/photos/charlottesville?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> for the welcome landing page background image.
+    </li>
+    <li>
+        Photo by <a href="https://unsplash.com/@shofukan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Colin Avery</a> on <a href="https://unsplash.com/s/photos/diner-night?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> for the homepage background image.
+    </li>
+    <li>
+        Portions of <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">Bootstrap icons</a> for site icons. Released under MIT license, copyright 2020 The Bootstrap Authors.
+    </li>
+    <li>
+        <a href="https://github.com/django-crispy-forms/django-crispy-forms/blob/main/LICENSE.txt">django-crispy-forms</a> for some form rendering. Released under MIT license, copyright 2021 Miguel Araujo, Daniel Feldroy, and contributors.
+    </li>
+    <li>
+        <a href="https://github.com/pennersr/django-allauth/blob/master/LICENSE">django-allauth</a> for user authentication via Google. Released under MIT license, copyright 2020 Raymond Penners and contributors.
+    </li>
+    <li>
+        <a href="https://github.com/python-visualization/folium/blob/master/LICENSE.txt">folium</a> for some maps functionality. Released under MIT license, copyright 2013 Rob Story.
+    </li>
+    <li>
+        <a href="https://github.com/geopy/geopy/blob/master/LICENSE">geopy</a> for some maps functionality. Released under MIT license, copyright 2018 geopy authors.
+    </li>
+    <li>
+        GeoLite2 data created by MaxMind, available from <a href="https://www.maxmind.com/">https://www.maxmind.com/</a>. Included in some maps functionality.
+    </li>
+</ul>
+<h2>Team</h2>
+<p>OpenNow was developed in Charlottesville, Virginia, by UVA students in Project Team B-26 of the CS 3240 course.</p>
+<ul>
+    <li>Catlinh Nguyen, Scrum Master</li>
+    <li>Alex White, DevOps Manager</li>
+    <li>Maggie Bujor, Requirements Manager</li>
+    <li>Andrew Nguyen, UX Designer</li>
+    <li>Tyler Willis, Testing Manager</li>
+</ul>
+{% endblock body-non-para %}
